@@ -157,7 +157,7 @@ function draw(){
         text("Evil Balloons left: "+enemiesLeft, 25,475);
         text("Bullets hit: "+bulletsHit, 25, 450);
         text("Shots fired: "+bulletsFired, 25, 425);
-        text("Shoot\nBullet", 423,445);
+        text("Press\nEnter\nTo Shoot", 410,430);
 
         if (enemiesLeft == 0){
             bulletArray.splice(0,bulletArray.length);
@@ -184,6 +184,16 @@ function draw(){
     }
 }
 
+function keyPressed(){
+    if (key == ' '){
+        // Generates a bullet for "Shoot Bullet" button
+        let tempBullet= new Projectile(myShipX, myShipY- 35, 5);
+        bulletArray.push(tempBullet);
+        userScore-- ;
+        bulletsFired++ ;
+    }
+}
+
 function mouseClicked(){
     if (state == 1){
         // Start the game
@@ -204,16 +214,6 @@ function mouseClicked(){
                 random(-3,3)
             );
             enemyShipArray.push(tempShip);
-        }
-    }
-
-    if (state == 2){
-        if (mouseX < 500 && mouseX > 400 && mouseY < 500 && mouseY > 400){
-            // Generates a bullet for "Shoot Bullet" button
-            let tempBullet= new Projectile(myShipX, myShipY- 35, 5);
-            bulletArray.push(tempBullet);
-            userScore-- ;
-            bulletsFired++ ;
         }
     }
 
